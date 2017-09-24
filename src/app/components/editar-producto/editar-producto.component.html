@@ -1,0 +1,33 @@
+<app-navegacion></app-navegacion>
+
+<div class="container">
+    <h1>Editar Producto</h1>
+    <form>
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" class="form-control" id="name" name="prod_nombre" value="{{producto?.prod_nombre}}" required [(ngModel)]="model.prod_nombre">
+      </div>
+      <div class="form-group">
+        <label for="desc">Descripción</label>
+        <textarea class="form-control" id="desc" required value="{{producto?.prod_descripcion}}" name="prod_descripcion" [(ngModel)]="model.prod_descripcion"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="name">Unidad</label>
+        <input type="text" class="form-control" id="name" name="prod_unidad" value="{{producto?.prod_unidad}}" required [(ngModel)]="model.prod_unidad">
+      </div>
+      <div class="form-group">
+        <label for="name">Base Unidad</label>
+        <input type="number" class="form-control" id="name" name="prod_base_unidad" value="{{producto?.prod_base_unidad}}" required [(ngModel)]="model.prod_base_unidad">
+      </div>
+      <div class="form-group">
+        <label for="name">Precio de Compra</label>
+        <input type="number" class="form-control" id="name" name="prod_prec_compra" value="{{producto?.prod_prec_compra}}" required [(ngModel)]="model.prod_prec_compra">
+      </div>
+      <div class="form-group">
+        <label for="name">Precio de Venta</label>
+        <input type="number" class="form-control" id="name" name="prod_prec_venta" value="{{producto?.prod_prec_venta}}" required [(ngModel)]="model.prod_prec_venta">
+      </div>
+      <button type="submit" class="btn btn-success" (click)="onSubmit(producto?.prod_id)">Guardar</button>
+    </form>
+    <p>{{ errorMessage }}</p>
+</div>

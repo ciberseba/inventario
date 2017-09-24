@@ -1,0 +1,45 @@
+<div class="container">
+<p>&nbsp;</p>
+<section id="loginform" class="outer-wrapper">
+
+<div class="inner-wrapper">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h2 class="text-center">Ingreso</h2></div>
+  
+  <div class="panel-body">
+  <form role="form">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nombre de Usuario</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="username" placeholder="Nombre de Usuario" [(ngModel)]="model.username">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Contraseña</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Contraseña" [(ngModel)]="model.password">
+  </div>
+  
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" [(ngModel)]="model.saved" [ngModelOptions]="{standalone: true}"> Recordarme
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default" (click)="onSubmit()">Ingresar</button>
+
+  <div *ngIf="errorMessage" class="form-group">
+    <label for="errorMessage"></label>
+    <div class="alert alert-danger">{{errorMessage}}</div>
+  </div>
+
+</form>
+</div>
+
+</div>
+    </div>
+  </div>
+</div>
+</div>
+
+</section>
+</div>

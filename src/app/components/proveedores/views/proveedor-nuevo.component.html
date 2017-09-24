@@ -1,0 +1,33 @@
+<app-navegacion></app-navegacion>
+
+<div class="container">
+    <h1>Nuevo Proveedor</h1>
+    <form>
+      <div class="form-group">
+        <label for="name">RUT</label>
+        <input type="text" class="form-control" id="name" name="prov_rut" required [(ngModel)]="model.prov_rut">
+      </div>
+      <div class="form-group">
+        <label for="name">Nombre o Razón Social</label>
+        <input type="text" class="form-control" id="name" name="prov_nombre" required [(ngModel)]="model.prov_nombre">
+      </div>
+      <div class="form-group">
+        <label for="name">Dirección</label>
+        <input type="text" class="form-control" id="name" name="prov_direccion" required [(ngModel)]="model.prov_direccion">
+      </div>
+      <div class="form-group">
+        <label for="name">Ciudad</label>
+        <input type="text" class="form-control" id="name" name="prov_ciudad" required [(ngModel)]="model.prov_ciudad">
+      </div>
+      <div class="form-group">
+        <label for="name">Fono</label>
+        <input type="number" class="form-control" id="name" name="prov_fono" required [(ngModel)]="model.prov_fono">
+      </div>
+      <div class="form-group">
+        <label for="name">Correo Electrónico</label>
+        <input type="text" class="form-control" id="name" name="prov_mail" required [(ngModel)]="model.prov_mail">
+      </div>
+      <button type="submit" class="btn btn-success" (click)="onSubmit()">Guardar</button>
+    </form>
+    <p>{{ errorMessage }}</p>
+</div>

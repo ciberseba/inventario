@@ -1,0 +1,91 @@
+<app-navegacion></app-navegacion>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8"><h3>Compra Nueva</h3></div>
+		<div class="col-xs-4 text-right">&nbsp;</div>
+	</div>
+</div>
+
+<div class="container">
+    <form>
+      <div class="form-group">
+        <label for="name">Buscar Proveedor</label>
+        <input #busq type="text" class="form-control" id="busq" name="busqueda" (keyup)="busqueda(busq.value)" required>
+      </div>
+    </form>
+    <div *ngFor="let prov of provBusq" class="row">
+      <div class="col-xs-12"><a role="button" (click)="selectProv(prov)">{{prov.prov_nombre}}</a> </div>
+    </div>
+</div>
+
+<div *ngIf="provSel?.prov_nombre" class="container">
+  <div class="row">
+    <div class="col-xs-4"><strong>RUT:</strong> {{provSel?.prov_rut}}</div>
+    <div class="col-xs-6"><strong>Nombre:</strong> {{provSel?.prov_nombre}}</div>
+    <div class="col-xs-2"><a role="button" (click)="removeProv()">(deshacer)</a></div>
+  </div>
+</div>
+
+<p>&nbsp;</p>
+
+<div class="container">
+    <form class="form-horizontal">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped table-highlight">
+        <thead class="thead">
+          <tr>
+            <th class="col-xs-1">Cant</th>
+            <th class="col-xs-5">Producto</th>
+            <th class="col-xs-2">Costo Unt</th>
+            <th class="col-xs-2">Costo Tot</th>
+            <th class="col-xs-2">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="producto">
+            <td><input type="number" class="form-control" name="cant" required [(ngModel)]="prodSel.prod_cant" /></td>
+            <td><input #prod type="text" class="form-control" name="producto" (keyup)="busquedaProd(prod.value)" value="{{prodSel?.prod_nombre}}" required />
+              <span *ngFor="let prod of prodBusq">
+                <a role="button" (click)="selectProd(prod)">{{prod.prod_nombre}}</a><br />
+              </span>
+            </td>
+            <td><input type="number" class="form-control" name="cunt" value="{{prodSel?.prod_prec_compra}}" required [(ngModel)]="prodSel.prod_prec_compra" /></td>
+            <td><input type="number" class="form-control" name="ctot" value="{{prodSel?.prod_prec_compra*prodSel?.prod_cant}}" required readonly /></td>
+            <td><a class="btn btn-default" role="button" (click)="saveProd(i)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+          </tr>
+          <tr *ngFor="let prd of listProds; let i = index" class="producto">
+            <td>{{prd.prod_cant}}</td>
+            <td>{{prd.prod_nombre}}</td>
+            <td>$ {{prd.prod_prec_compra | peso}}</td>
+            <td>$ {{prd.prod_prec_compra*prd.prod_cant | peso}}</td>
+            <td> <a class="btn btn-default" role="button" (click)="removeProd(i)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+          </tr>
+          <tr>
+            <td>Extras:</td>
+            <td><input type="text" class="form-control" name="extra_desc" [(ngModel)]="detalles.extraText" required /></td>
+            <td> + </td>
+            <td><input type="number" #ext class="form-control" name="ext" [(ngModel)]="detalles.extra" (ngModelChange)="suma(ext.value)" /></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>Desc:</td>
+            <td><input type="text" class="form-control" name="desc_desc"  [(ngModel)]="detalles.descuentoText" required /></td>
+            <td> - </td>
+            <td><input type="number" #desc class="form-control" name="desc" [(ngModel)]="detalles.descuento"  (keyup)="resta(desc.value)" /></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>Total:</td>
+            <td>$ {{getTotal() | peso }}</td>
+            <td>&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-success" (click)="onSubmit()">Guardar</button>
+      </div>
+    </form>
+    <p>{{ errorMessage }}</p>
+</div>

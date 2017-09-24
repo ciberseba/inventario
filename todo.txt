@@ -1,0 +1,81 @@
+Aplicacion Control de Stock:
+
+- Módulo Usuarios:
+Listado de Usuarios, posibilidad de crear nuevos usuarios, modificar existentes, perfiles de acceso (selección de módulos).
+
+- Módulo Productos:
+Listado de Definición de Productos, titulo, descripción, unidad de medida, fotografías, etc.
+
+- Módulo Ingreso:
+Ingreso de ítems a stock, cantidad, costo unitario.
+
+- Módulo Venta:
+Unidades vendidas, cantidad, precio de venta, iva, total
+
+- Módulo Stock:
+Consulta de Stock de determinado producto, listado de inventario actual
+
+- Reportes:
++ Consultar compras (filtro por fecha)
++ Consultar ventas (filtro por fecha)
++ Balance (por mes / rango de fechas)
++ Productos más vendidos (filtro por fecha)
+
+- Opciones:
++ Iva: Iva incluido o precios netos, porcentaje iva.
+
+BD:
+
+Host: facilsoft.info
+BD: facilsof_inventario
+User: facilsof_user
+Pass: f4c1ls0ft
+
+- Usuario
++ id_usuario
++ username
++ password
++ correo
++ fono
++ nombre
++ apellido
++ rut
+
+- Producto 
++ id_producto
++ codigo
++ nombre
++ descripcion
++ unidad
++ base_unidad
+
+- Producto_Atributo
++ id_prod_atrib
++ id_producto
++ nombre_atributo
++ descripcion
+
+- Unidad
++ id_unidad
++ sku
++ id_producto
++ estado
+
+- Unidad_compra
++ id_und_cmp
++ id_unidad
++ fecha_compra
++ precio_compra
++ iva_compra
+
+- Unidad_venta
++ id_und_vnt
++ id_unidad
++ fecha_venta
++ precio_venta
++ iva_venta
+
+- Unidad_Atributo
++ id_und_atr
++ id_unidad
++ valor_atributo
